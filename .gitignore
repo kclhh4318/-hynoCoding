@@ -1,0 +1,10 @@
+*.exe
+.DS_STORE
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
