@@ -1,3 +1,5 @@
+//삼각형 외우기
+
 #include <iostream>
 using namespace std;
 

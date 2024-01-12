@@ -1,3 +1,5 @@
+//그룹 단어 체커
+
 #include <iostream>
 using namespace std;
 
