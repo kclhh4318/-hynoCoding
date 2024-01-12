@@ -1,18 +1,24 @@
 #include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
-int a[101][101], b[101][101],n,m;
-int main() {
-    cin >> n >> m;
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            cin >> a[i][j];
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= m; j++)
-            cin >> b[i][j];
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= m; j++)
-            cout << a[i][j] + b[i][j] << ' ';
-        cout << '\n';
+
+int main(){
+
+    vector<string> croatian = {"c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="};
+    string str;
+    cin >> str;
+
+    for(int i = 0; i < croatian.size(); i++){
+        while(1){
+            int idx;
+            idx = str.find(croatian[i]);
+            if(idx == string::npos) break;
+            str.replace(idx, croatian[i].length(), "$");
+        }
     }
+
+    cout << str.length() << endl;
+
+    return 0;
 }
