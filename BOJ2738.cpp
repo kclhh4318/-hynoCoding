@@ -11,7 +11,7 @@ int main(){
     int** A = new int* [N];
     int** B = new int* [N];
 
-    for(int i = 0; i < M; i++){
+    for(int i = 0; i < N; i++){
         A[i] = new int[M];
         B[i] = new int[M];
     }
