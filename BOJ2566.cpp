@@ -2,21 +2,22 @@
 
 #include <iostream>
 using namespace std;
-int arr[9][9];
+int const SIZE = 9;
+int arr[SIZE][SIZE];
 
 int main(){
 
     cin.tie(0);
     ios_base::sync_with_stdio(false);
 
-    for(int i = 0; i < 9; i++){
-        for(int j = 0; j < 9; j++) cin >> arr[i][j];
+    for(int i = 0; i < SIZE; i++){
+        for(int j = 0; j < SIZE; j++) cin >> arr[i][j];
     }
 
     int max = arr[0][0], row = 1, column = 1; // 행렬 초기화 하는 거 주의
 
-    for(int i = 0; i < 9; i++){
-        for(int j = 0; j < 9; j++){
+    for(int i = 0; i < SIZE; i++){
+        for(int j = 0; j < SIZE; j++){
             if(max < arr[i][j]){
                 max = arr[i][j];
                 row = i + 1;
@@ -25,8 +26,8 @@ int main(){
         }
     }
 
-    cout << max << endl;
-    cout << row << " " << column << endl;
+    cout << max << '\n';
+    cout << row << " " << column << '\n';
 
     return 0;
 }
