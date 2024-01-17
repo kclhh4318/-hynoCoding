@@ -1,3 +1,5 @@
+//색종이
+
 #include <iostream>
 using namespace std;
 int const drawingPaperSIZE = 100;
