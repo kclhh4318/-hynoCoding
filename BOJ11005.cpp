@@ -1,3 +1,5 @@
+//진법 변환 2
+
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -18,7 +20,7 @@ int main(){
     }
 
     reverse(result.begin(), result.end());
-    
+
     cout << result << '\n';
 
     return 0;
