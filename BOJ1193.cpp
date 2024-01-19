@@ -12,7 +12,7 @@ int main(){
 
     cin >> X;
 
-
+    
 
     return 0;
 }
