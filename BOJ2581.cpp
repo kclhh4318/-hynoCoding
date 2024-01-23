@@ -12,7 +12,7 @@ int main(){
     cin >> M >> N;
 
     vector<int> p;
-
+    
     for(int i = M; i <= N; i++){
         bool isPrime = true;
         if(i < 2) continue;
