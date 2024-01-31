@@ -1,34 +1,36 @@
 #include <iostream>
-#include <limits>
 #include <vector>
+#include <limits>
 using namespace std;
+
+int ans = numeric_limits<int>::min();
+
+void blackJack(const vector<int>& cards, int M, int sum, int idx, int cnt){
+    if(cnt == 3){
+        if(sum <= M && sum > ans){
+            ans = sum;
+        }
+        return;
+    }
+    if(idx >= cards.size()) return;
+
+    blackJack(cards, M, sum + cards[idx], idx + 1, cnt + 1);
+
+    blackJack(cards, M, sum, idx + 1, cnt);
+}
 
 int main(){
 
     cin.tie(0);
     ios_base::sync_with_stdio(false);
 
-    int N, M, max = numeric_limits<int>::min();
-    vector<int> v;
-
+    int N, M;
     cin >> N >> M;
-
+    vector<int> cards(N);
     for(int i = 0; i < N; i++){
-        int temp;
-        cin >> temp;
-        v.push_back(temp);
+        cin >> cards[i];
     }
+    blackJack(cards, M, 0, 0, 0);
 
-    for(int i = 0; i < v.size(); i++){
-        for(int j = i + 1; j < v.size(); j++){
-            for(int k = j + 1; k < v.size(); k++){
-                int sum = v[i] + v[j] + v[k];
-                if(sum <= M && sum > max) max = sum;
-            }
-        }
-    }
-
-    cout << max << endl;
-
-    return 0;
+    cout << ans << '\n';
 }
