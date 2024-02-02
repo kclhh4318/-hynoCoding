@@ -11,7 +11,7 @@ int Check(const vector<string>& v, int x, int y){
     for(int T = 0; T < 2; T++){
         int cnt = 0;
         for(int i = 0; i < 8; i++){
-            for(int j = 0; i < 8; j++){
+            for(int j = 0; j < 8; j++){
                 if(v[x + i][y + j] != BW[(i + j + T) % 2]) cnt++;
             }
         }
