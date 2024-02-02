@@ -4,41 +4,38 @@
 #include <limits>
 using namespace std;
 
-int checkBoard(const vector<string>& board, int x, int y) {
-    char colors[2] = {'B', 'W'};
-    int ans = numeric_limits<int>::max();
+int Check(const vector<string>& v, int x, int y){
+    char BW[2] = {'B', 'W'};
+    int minChange = numeric_limits<int>::max();
 
-    for(int c = 0; c < 2; c++) {
-        int change = 0;
-        for(int i = 0; i < 8; i++) {
-            for(int j = 0; j < 8; j++) {
-                if(board[x+i][y+j] != colors[(i + j + c) % 2]) {
-                    change++;
-                }
+    for(int T = 0; T < 2; T++){
+        int cnt = 0;
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; i < 8; j++){
+                if(v[x + i][y + j] != BW[(i + j + T) % 2]) cnt++;
             }
         }
-        ans = min(ans, change);
+        minChange = min(minChange, cnt);
     }
-
-    return ans;
+    return minChange;
 }
 
-int main() {
+int main(){
+
     int N, M;
     cin >> N >> M;
-    vector<string> board(N);
-    for(int i = 0; i < N; i++) {
-        cin >> board[i];
-    }
 
-    int result = numeric_limits<int>::max();
-    for(int i = 0; i <= N - 8; i++) {
-        for(int j = 0; j <= M - 8; j++) {
-            result = min(result, checkBoard(board, i, j));
+    vector<string> board(N);
+    for(int i = 0; i < N; i++) cin >> board[i];
+
+    int ans = numeric_limits<int>::max();
+    for(int i = 0; i <= N - 8; i++){
+        for(int j = 0; j <= M - 8; j++){
+            ans = min(ans, Check(board, i, j));
         }
     }
 
-    cout << result << '\n';
+    cout << ans << endl;
 
     return 0;
 }
