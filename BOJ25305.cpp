@@ -1,5 +1,3 @@
-//삽입 정렬 한 번 더 구현하여보자.
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -8,26 +6,22 @@ using namespace std;
 void insertSort(vector<int>& A){
     for(int i = 0; i < A.size(); ++i){
         int j = i;
-        while(j > 0 && A[j - 1] >= A[j]){
+        while(j > 0 && A[j - 1] > A[j]){
             swap(A[j - 1], A[j]);
             --j;
         }
     }
 }
 
-void printVec(const vector<int>& A){
-    for(int i = 0; i < A.size(); ++i) cout << A[i] << endl;
-}
-
 int main(){
 
-    cin.tie(NULL);
+    cin.tie(0);
     ios_base::sync_with_stdio(false);
 
-    int N;
-    cin >> N;
-
+    int N, k;
     vector<int> v;
+
+    cin >> N >> k;
 
     for(int i = 0; i < N; i++){
         int temp;
@@ -35,7 +29,9 @@ int main(){
         v.push_back(temp);
     }
 
-    insertSort(v); printVec(v);
+    insertSort(v);
+
+    cout << v[N - k] << endl;
 
     return 0;
 }
