@@ -10,10 +10,8 @@ void insertSort(vector<int>& A){
         int j = i;
 
         while(j > 0 && A[j - 1] < A[j]){
-
             swap(A[j - 1], A[j]);
             j--;
-
         }
     }
 }
