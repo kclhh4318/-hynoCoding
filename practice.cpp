@@ -1,40 +1,35 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
-void countingSort(vector<int>& arr, int range) {
-    vector<int> count(range + 1, 0);
+int main(){
 
-    for (int i = 0; i < arr.size(); i++) {
-        count[arr[i]]++;
-    }
+    cin.tie(0);
+    ios_base::sync_with_stdio(false);
 
-    int index = 0;
-    for (int i = 0; i <= range; i++) {
-        while (count[i] > 0) {
-            arr[index++] = i;
-            count[i]--;
-        }
-    }
-}
+    vector<int> v;
 
-int main() {
-    int N;
-    cin >> N;
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    v.push_back(3);
+    v.push_back(1);
+    v.push_back(4);
+    v.push_back(3);
+    v.push_back(2);
+    v.push_back(2);
+    v.push_back(2);
+    v.push_back(2);
+    v.push_back(1);
 
-    vector<int> arr(N);
-    int maxElement = 0;
+    sort(v.begin(), v.end());
 
-    for (int i = 0; i < N; i++) {
-        cin >> arr[i];
-        maxElement = max(maxElement, arr[i]);
-    }
+    unique(v.begin(), v.end());
 
-    countingSort(arr, maxElement);
+    for(int i = 0; i < v.size(); i++) cout << v[i] << " ";
 
-    for (int i = 0; i < N; i++) {
-        cout << arr[i] << endl;
-    }
-
+    cout << endl;
+    
     return 0;
 }
