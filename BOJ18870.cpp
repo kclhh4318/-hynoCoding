@@ -1,23 +1,13 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
-#include <unordered_set>
+#include <unordered_map>
 using namespace std;
 
-void compression(vector<int>& A, vector<int>& count) {
-    unordered_set<int> seen;
+void func(vector<int>& A, vector<int> SA);
 
-    for (int i = 0; i < A.size(); i++) {
-        for (int j = 0; j < A.size(); j++) {
-            if (A[i] > A[j] && seen.find(A[j]) == seen.end()) {
-                count[i]++;
-                seen.insert(A[j]);
-            }
-        }
-        seen.clear();
-    }
-}
+int main(){
 
-int main() {
     cin.tie(0);
     ios_base::sync_with_stdio(false);
 
@@ -25,15 +15,29 @@ int main() {
     cin >> N;
 
     vector<int> v(N);
-    vector<int> count(N, 0);
+    vector<int> sortV;
 
-    for (int i = 0; i < v.size(); i++) cin >> v[i];
+    for(int i = 0; i < N; i++){
+        cin >> v[i];
+        sortV.push_back(v[i]);
+    }
 
-    compression(v, count);
-
-    for (int i = 0; i < count.size(); i++) cout << count[i] << " ";
+    func(v, sortV);
 
     cout << endl;
 
     return 0;
+}
+
+void func(vector<int>& A, vector<int> SA){
+    sort(SA.begin(), SA.end());
+    SA.erase(unique(SA.begin(), SA.end()), SA.end());
+    unordered_map<int, int> m;
+    int Comp = 0;
+    for(int i : SA){
+        m[i] = Comp++;
+    }
+    for(int i = 0; i < A.size(); i++){
+        cout << m[A[i]] << " ";
+    }
 }
