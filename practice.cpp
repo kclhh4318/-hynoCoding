@@ -1,41 +1,18 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
-#include <unordered_map>
-
 using namespace std;
 
-int main() {
-    int N;
-    cin >> N;
+int main(){
 
-    vector<int> coordinates(N);
-    vector<int> sortedCoordinates;
+    vector<string> m(5);
+    vector<string> check(11);
 
-    // 입력 받기 및 정렬
-    for (int i = 0; i < N; ++i) {
-        cin >> coordinates[i];
-        sortedCoordinates.push_back(coordinates[i]);
-    }
+    for(int i = 0; i < m.size(); i++) cin >> m[i];
+    for(int i = 0; i < check.size(); i++) cin >> check[i];
 
-    // 중복 제거 및 정렬
-    sort(sortedCoordinates.begin(), sortedCoordinates.end());
-    sortedCoordinates.erase(unique(sortedCoordinates.begin(), sortedCoordinates.end()), sortedCoordinates.end());
+    auto it = find(m.begin(), m.end(), "baekjoononlinejudge") - m.begin();
 
-    // 좌표 압축을 위한 맵 생성
-    unordered_map<int, int> compressionMap;
-    int compressedValue = 0;
-
-    for (int coord : sortedCoordinates) {
-        compressionMap[coord] = compressedValue++;
-    }
-
-    // 결과 출력
-    for (int i = 0; i < N; ++i) {
-        cout << compressionMap[coordinates[i]] << " ";
-    }
-
-    cout << endl;
+    cout << it << endl;
 
     return 0;
 }
