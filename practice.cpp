@@ -1,39 +1,28 @@
 #include <iostream>
-#include <vector>
-#include <unordered_set>
 using namespace std;
 
 void def(){
-	cin.tie(0); cout.tie(0);
-	ios_base::sync_with_stdio(false);
+    cin.tie(0); cout.tie(0);
+    ios_base::sync_with_stdio(false);
 }
 
-int main(){
+int main() {
 
-	def();
+    def();
+    
+    int N;
+    cin >> N;
 
-	int n;
-	string namae, status;
-	cin >> n;
-	unordered_set<string> name;
+    int originalN = N;
+    int count = 0;
 
-	for(int i = 0; i < n; i++){
-		cin >> namae >> status;
-		if(status == "enter"){
-			name.insert(namae);
-		}
-		else{
-			name.erase(namae);
-		}
-	}
+    do {
+        int digitSum = (N / 10 + N % 10) % 10;
+        N = N % 10 * 10 + digitSum;
+        count++;
+    } while (N != originalN);
 
-	vector<string> permut(name.begin(), name.end());
+    cout << count << endl;
 
-	sort(permut.rbegin(), permut.rend());
-
-	for(const auto& it : permut) cout << it << '\n';
-
-	cout << endl;
-
-	return 0;
+    return 0;
 }

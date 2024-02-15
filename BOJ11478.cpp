@@ -1,6 +1,5 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <unordered_set>
 #include <string>
 using namespace std;
 
@@ -11,20 +10,20 @@ void def(){
 
 int main(){
 
-    def();
-
     string S, temp;
-    vector<string> subStr;
+    unordered_set<string> Sub;
+
     cin >> S;
 
     for(int i = 0; i < S.length(); i++){
-        for(int j = 1; j <= S.length() - i; j++){
-            temp = S.substr(i, j);
-            if(find(subStr.begin(), subStr.end(), temp) == subStr.end()) subStr.push_back(temp);
+        temp = "";
+        for(int j = i; j < S.length(); j++){
+            temp += S[j];
+            Sub.insert(temp);
         }
     }
 
-    cout << subStr.size() << endl;
+    cout << Sub.size() << endl;
 
     return 0;
 }
