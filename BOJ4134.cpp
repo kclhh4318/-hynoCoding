@@ -10,7 +10,6 @@ void def() {
     ios_base::sync_with_stdio(false);
 }
 
-// Function to find the next prime number greater than or equal to n
 ll findNextPrime(ll n) {
     while (true) {
         bool isPrime = true;
