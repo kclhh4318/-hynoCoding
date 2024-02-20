@@ -1,5 +1,6 @@
 #include <iostream>
-#include <algorithm>
+#include <vector>
+#include <cmath>
 using namespace std;
 
 void def(){
@@ -7,19 +8,30 @@ void def(){
     ios_base::sync_with_stdio(false);
 }
 
+bool isPrime(int n){
+        if(n == 1) return false;
+        if(n % 2 == 0) return n == 2 ? true : false;
+        else for(int i = 3; i <= sqrt(n); i++){
+            if(n % i == 0) return false;
+        }
+    return true;
+}
+
 int main(){
 
-    int arr[3];
+    def();
 
-    for(int i = 0; i < 3; i++) cin >> arr[i];
+    int N, M;
+    cin >> N >> M;
+    vector<int> v;
 
-    for(int i = 1; i < 3; i++){
-        if(arr[i - 1] > arr[i]) swap(arr[i - 1], arr[i]);
+    for(int i = N; i <= M; i++){
+        if(isPrime(i)) v.push_back(i);
     }
 
-    if(arr[0] > arr[1]) swap(arr[0], arr[1]);
-
-    for(int i = 0; i < 3; i++) cout << arr[i] << " ";
+    for(const auto& i : v){
+        cout << i << '\n';
+    }
 
     return 0;
 }
