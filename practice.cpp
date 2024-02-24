@@ -1,37 +1,40 @@
 #include <iostream>
+#include <unordered_set>
 #include <vector>
-#include <cmath>
 using namespace std;
 
-void def(){
+void init(){
     cin.tie(0); cout.tie(0);
     ios_base::sync_with_stdio(false);
 }
 
-bool isPrime(int n){
-        if(n == 1) return false;
-        if(n % 2 == 0) return n == 2 ? true : false;
-        else for(int i = 3; i <= sqrt(n); i++){
-            if(n % i == 0) return false;
-        }
-    return true;
-}
-
 int main(){
 
-    def();
+    init();
 
-    int N, M;
-    cin >> N >> M;
-    vector<int> v;
+    int N, ans = 0;
+    string input;
+    unordered_set<string> greetings;
+    vector<string> records;
 
-    for(int i = N; i <= M; i++){
-        if(isPrime(i)) v.push_back(i);
+    cin >> N;
+
+    for(int i = 0; i < N; i++){
+        cin >> input;
+        records.push_back(input);
+
+        if(input == "ENTER"){
+            // 새로운 사람이 입장하면 인사 곰곰티콘으로 간주
+            greetings.insert(records.back());
+        }
+        else{
+            // 곰곰티콘이 사용된 닉네임이면 제거
+            greetings.erase(input);
+        }
     }
 
-    for(const auto& i : v){
-        cout << i << '\n';
-    }
+    // 최종적으로 남아있는 곰곰티콘 수 출력
+    cout << greetings.size() << '\n';
 
     return 0;
 }
