@@ -1,1 +1,0 @@
-        if(input == "ENTER") continue;
