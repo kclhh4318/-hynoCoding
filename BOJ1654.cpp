@@ -13,15 +13,33 @@ int main(){
     init();
 
     int K, N;
-    long long temp;
-    vector<long long> v;
-
     cin >> K >> N;
 
+    vector<int> v(K);
+    int max_len = 0;
     for(int i = 0; i < K; i++){
-        cin >> temp;
-        v.push_back(temp);
+        cin >> v[i];
+        max_len = max(max_len, v[i]);
     }
+
+    long long left = 1;
+    long long right = max_len;
+    long long mid = (left + right) / 2;
+
+    while(left <= right){
+        int cnt = 0;
+        for(int i = 0; i < K; i++){
+            cnt += v[i] / mid;
+        }
+        if(cnt >= N){
+            left = mid + 1;
+        }else{
+            right = mid - 1;
+        }
+        mid = (left + right) / 2;
+    }
+
+    cout << mid << '\n';
 
     return 0;
 }
