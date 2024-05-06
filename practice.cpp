@@ -1,1 +1,0 @@
-nomu!("umdi dak) 
